@@ -34,21 +34,16 @@
 	</div>
 	<script type="text/javascript">
 		let icon = document.getElementById("theme");
-		let theme = document.cookie
-			.split("; ")
-			.find((row) => row.startsWith("theme="))
-			?.split("=")[1];
 
 		// function to set a given theme/color-scheme
 	    function setTheme(themeName) {
 	        localStorage.setItem('theme', themeName);
-	        document.cookie = "theme=" + themeName;
 	        document.documentElement.setAttribute('data-bs-theme', themeName);
 	    }
 
 	    // function to toggle between light and dark theme
 	    function toggleTheme() {
-	        if (localStorage.getItem('theme') === 'dark' && theme === 'dark') {
+	        if (localStorage.getItem('theme') === 'dark') {
 	            setTheme('light');
 	            icon.setAttribute('class', 'nav-link bi bi-moon-stars-fill')
 	        } else {
@@ -59,7 +54,7 @@
 
 	    // Immediately invoked function to set the theme on initial load
 	    (function () {
-	        if (localStorage.getItem('theme') === 'dark' && theme === 'dark') {
+	        if (localStorage.getItem('theme') === 'dark') {
 	            setTheme('dark');
 	            icon.setAttribute('class', 'nav-link bi bi-sun-fill')
 	        } else {
